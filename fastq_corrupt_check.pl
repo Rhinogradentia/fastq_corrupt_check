@@ -43,6 +43,10 @@ foreach my $file (@ARGV) {
 	foreach my $line (`$cat $file`) {
 		$line_number++;
 		chomp $line;
+  		if ($line_nummber == 1) && ($line !~ m/^@.*/) {
+    			say "The first line does not start with an @: $line"; 
+       			die;
+		}
 		if ($line_number == 2) {#@ the 2nd entry
 			$no_of_nucleotides = length $line;
 		}
